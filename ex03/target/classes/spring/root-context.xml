@@ -24,6 +24,6 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-<!-- 	<bean id="emp" class="co.hans.app.Employees"/> -->
+    <!-- <bean id="emp" class="co.hans.app.Employees"/> -->
     <context:component-scan base-package="co.hans.app"></context:component-scan>
 </beans>

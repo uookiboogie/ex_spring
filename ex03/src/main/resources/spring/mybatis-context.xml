@@ -23,6 +23,6 @@
     <!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="co.hans.app.impl" />
 	</bean> 아래랑 똑같다.-->
-	<mybatis-spring:scan base-package="co.hans.app.impl"/>
+	<mybatis-spring:scan base-package="co.hans.app.**.mapper"/>
 
 </beans>

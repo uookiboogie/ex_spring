@@ -10,7 +10,7 @@
    
    <typeAliases>
      <!-- 이름 줄이기 -->
-     <!--<typeAlias type="" alias=""/> -->
+     <typeAlias type="co.hans.app.board.domain.BoardVO" alias="BoardVO"/>
      <!-- 자동으로 만들기 소문자,대문자 상관없이 파일명-->
      <package name="co.hans.app"/>
    </typeAliases>
