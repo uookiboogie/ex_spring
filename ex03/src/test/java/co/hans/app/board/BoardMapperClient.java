@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import co.hans.app.board.domain.BoardVO;
+import co.hans.app.board.domain.Criteria;
 import co.hans.app.board.mapper.BoardMapper;
 import co.hans.app.board.service.BoardService;
 import lombok.extern.java.Log;
@@ -19,12 +20,15 @@ import lombok.extern.java.Log;
 @ContextConfiguration("classpath:/spring/*-context.xml")
 public class BoardMapperClient {
 
-	//@Autowired BoardMapper boardMapper;
-	@Autowired BoardService boardMapper;
+	@Autowired BoardMapper boardMapper;
+	//@Autowired BoardService boardMapper;
 	
 	@Test
 	public void getList() {
-		log.info(boardMapper.getList().toString());
+		Criteria cri = new Criteria(1, 10);
+		cri.setType("C");
+		cri.setKeyword("hi");
+		log.info(boardMapper.getList(cri).toString());
 	}
 	//@Test
 	public void insert() {

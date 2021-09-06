@@ -53,8 +53,13 @@
                                             <textarea class="form-control" rows="3" name="content">${board.content}</textarea>
                                         </div>
 <fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd"/>
+
+										  <input type="hidden" name="pageNum" value="${cri.pageNum}">
+										  <input type="hidden" name="amount" value="${cri.amount}">
+
                                         <button type="submit" class="btn btn-default">수정하기</button>
                                         <button type="submit" class="btn btn-danger" formaction="delete">삭제하기</button>
+                                        <a type="button" class="btn btn-success" href="list?pageNum=${cri.pageNum }&amount=${cri.amount}">목록으로</a>
                                     </form>                  
                                 </div>
                             </div>

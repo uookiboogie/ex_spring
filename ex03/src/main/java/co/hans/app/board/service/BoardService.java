@@ -3,6 +3,7 @@ package co.hans.app.board.service;
 import java.util.List;
 
 import co.hans.app.board.domain.BoardVO;
+import co.hans.app.board.domain.Criteria;
 
 public interface BoardService {
 	
@@ -19,5 +20,8 @@ public interface BoardService {
 	public BoardVO read(BoardVO vo);
 	
 	//전체조회
-	public List<BoardVO> getList();
+	public List<BoardVO> getList(Criteria cri);
+	
+	//전체 데이터 건수
+	public int getTotalCount(Criteria cri);
 }
