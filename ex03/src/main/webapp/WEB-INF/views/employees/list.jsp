@@ -54,7 +54,7 @@
 	    <option value="TCW" <c:out value="${pageMaker.cri.type=='TCW' ? 'selected':''}"/>>employeeId 또는 lastName 또는 jobId</option>
 	  </select>
 	  <input name="keyword" value="${pageMaker.cri.keyword}">
-	  <button class="btn btn-default" onclick="keyword(e)">검색</button>
+	  <button type="button" class="btn btn-default" onclick="keyword1(event)">검색</button>
 	  <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 	  <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 	</form>
@@ -102,14 +102,13 @@
     	    event.preventDefault();
     	  };
     	});
-      
-      function keyword(e){
-    	  e.preventDefault();
-    	  $('input[name="pageNum"]').val('1');
-    	  actionForm.submit();
-      }
-      
+            
   })
+      function keyword1(e){
+       // e.preventDefault();
+       $('input[name="pageNum"]').val('1');
+       actionForm.submit();
+      }
 </script>
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
