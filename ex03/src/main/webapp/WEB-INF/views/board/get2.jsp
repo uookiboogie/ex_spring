@@ -98,7 +98,7 @@
             </div>
             <p>good job!</p>
           </div>
-        </ul>-->
+        </ul> --> 
       </div>
       
     </div>
@@ -109,46 +109,40 @@
   </div>
 
 </div>
-
+<script src="../resources/asset/js/reply.js"></script>
 <script>
+  
   let bno = "${board.bno}";
   $(function(){
+	
 	//등록처리
 	$("#saveReply").on("click",function(){
-		$.ajax({
-		  url : "../reply/",
-		  method : "post",
-		  data : $("#replyForm").serialize(),
-		  dataType : "json",
-		  success : function(data){
-				    $(".chat").append(makeLi(data));
-		            }
-		});
+      replyService.add(function(data){
+    	  $(".chat").append(makeLi(data));
+      });
 	});
+
 	//목록조회  
-	$.ajax({
-		url : "../reply/",   //method(or type):"get"
-		data : {bno: bno},   //"bno=377"
-		dataType : "json",   //응답결과가 json
-		success : function(datas){
-			//console.log(datas);
-			str ="";
-			for(i=0; i<datas.length; i++){
-				str += makeLi(datas[i])
-			}
-			$(".chat").html(str);
+    replyService.getList({bno : bno}, listCallback);
+	
+	function listCallback(datas){
+		var str ="";
+		for(i=0; i<datas.length; i++){
+			str += makeLi(datas[i]);
 		}
-	})
-	function makeLi(data){ 
-        return'  <li class="left clearfix"> '
-			+ '      <div>'
-			+ '        <div class="header">'
-			+ '          <strong class="primary-font">'+data.replyer+'</strong>'
-			+ '          <small class="pull-right text-muted">'+data.replyDate+'</small>'
-			+ '	        </div>'
-			+ '        <p>'+data.reply+'</p>'
-		    + '    </div>'
-		    + '	 </li>'
+		$(".chat").html(str);
+	}
+	
+	function makeLi(data){
+		return '  <li class="left clearfix"> '
+		+ '      <div>'
+		+ '        <div class="header">'
+		+ '          <strong class="primary-font">'+data.replyer+'</strong>'
+		+ '          <small class="pull-right text-muted">'+data.replyDate+'</small>'
+		+ '	        </div>'
+		+ '        <p>'+data.reply+'</p>'
+	    + '    </div>'
+	    + '	 </li>'
 	}
   })
 
