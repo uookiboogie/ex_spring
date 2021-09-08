@@ -133,8 +133,8 @@
 		success : function(datas){
 			//console.log(datas);
 			str ="";
-			for(i=0; i<datas.length; i++){
-				str += makeLi(datas[i])
+			for(i=0; i<datas.list.length; i++){
+				str += makeLi(datas.list[i])
 			}
 			$(".chat").html(str);
 		}

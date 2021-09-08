@@ -25,4 +25,10 @@ public interface ReplyMapper {
 	//전체 조회
 	public List<ReplyVO> getList(@Param("cri") Criteria cri, @Param("bno") Long bno);
 	
+	//전체 조회 페이징 추가
+	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri, @Param("bno") Long bno);
+	
+	//해당 게시글의 댓글 수 조회
+	public int getCountByBno(Long bno);
+	
 }

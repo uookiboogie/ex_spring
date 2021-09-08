@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import co.hans.app.board.domain.Criteria;
+import co.hans.app.board.domain.ReplyPageVO;
 import co.hans.app.board.domain.ReplyVO;
 
 public interface ReplyService {
@@ -24,5 +25,8 @@ public interface ReplyService {
 	
 	//전체 조회
 	public List<ReplyVO> getList(@Param("cri") Criteria cri, @Param("bno") Long bno);
+	
+	//전체 조회 페이징 추가
+	public ReplyPageVO getListWithPaging(@Param("cri") Criteria cri, @Param("bno") Long bno);
 	
 }

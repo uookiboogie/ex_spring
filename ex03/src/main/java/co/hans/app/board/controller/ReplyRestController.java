@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.hans.app.board.domain.Criteria;
+import co.hans.app.board.domain.ReplyPageVO;
 import co.hans.app.board.domain.ReplyVO;
 import co.hans.app.board.service.ReplyService;
 
@@ -25,9 +26,13 @@ public class ReplyRestController {
   @Autowired ReplyService replyService;
   
   //해당 게시글의 댓글만 조회
+//  @GetMapping("/")
+//  public List<ReplyVO> getList(Criteria cri, @RequestParam Long bno){
+//	  return replyService.getList(cri, bno);
+//  }
   @GetMapping("/")
-  public List<ReplyVO> getList(Criteria cri, @RequestParam Long bno){
-	  return replyService.getList(cri, bno);
+  public ReplyPageVO getListWithPaging(Criteria cri, @RequestParam Long bno){
+	  return replyService.getListWithPaging(cri, bno);
   }
   
   //댓글조회

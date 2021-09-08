@@ -16,13 +16,17 @@ import lombok.extern.java.Log;
 @ContextConfiguration("classpath:/spring/*-context.xml")
 public class ReplyMapperClient {
 
-  //@Autowired ReplyMapper replyMapper;
+  @Autowired ReplyMapper replyMapper;
   @Autowired ReplyService replyService;
   
-  @Test
+  //@Test
   public void getList() {
 	  Criteria cri = new Criteria(1,5);
 	  log.info(replyService.getList(cri, 30l).toString());
   }
-  
+  @Test
+  public void getListWithPaging() {
+	  Criteria cri = new Criteria(1,10);
+	  log.info(replyMapper.getListWithPaging(cri, 30L).toString());
+  }
 }
