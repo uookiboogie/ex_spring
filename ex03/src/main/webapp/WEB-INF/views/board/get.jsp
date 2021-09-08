@@ -24,14 +24,14 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Board 상세보기
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <form role="form" action="modify" method="post">
                                         <div class="form-group">
                                             <label>bno</label>
@@ -49,10 +49,14 @@
                                             <p class="help-block">Example block-level help text here.</p>
                                         </div>
                                         <div class="form-group">
+                                            <label>regdate</label>
+                                            <input class="form-control" name="bno" value="<fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd"/>" readonly>
+                                            <p class="help-block">Example block-level help text here.</p>
+                                        </div>
+                                        <div class="form-group">
                                             <label>Content</label>
                                             <textarea class="form-control" rows="3" name="content">${board.content}</textarea>
                                         </div>
-<fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd"/>
 
 										  <input type="hidden" name="pageNum" value="${cri.pageNum}">
 										  <input type="hidden" name="amount" value="${cri.amount}">
@@ -73,39 +77,42 @@
             </div>
             <!-- /.row -->
 <!-- 댓글 등록 -->
+<div class="row">
+<div class="col-lg-6">
+<div class="panel panel-default">
 <div class="panel-heading">
   <form id ="replyForm">
     <input type="hidden" name="bno" value="${board.bno }">
-    <input name="replyer" value="user1">
-    <input name="reply">
+      <div class="form-group">
+        <label>replyer</label>
+        <input class="form-control" name="replyer" value ="">
+      </div>
+      <div class="form-group">
+        <label>reply</label>
+        <textarea class="form-control" rows="2" name="reply"></textarea>
+      </div>
+
     <button type="button" id="saveReply">댓글등록</button>
   </form>
 </div>
+</div>
+</div>
+</div>
 <!-- 댓글 목록  -->
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-6">
     <div class="panel panel-default">
       <div class="panel-heading">
         <i class="fa fa-comments fa-fw"></i> 댓글
       </div>
       <div class="panel-body">
-      <!--  <ul class="chat">
-          <li class="left clearfix" data-rno='12'>
-          <div>
-            <div class="header">
-              <strong class="primary-font">user00</strong>
-              <small class="pull-right text-muted">2018-01-01 13:13</small>
-            </div>
-            <p>good job!</p>
-          </div>
-        </ul>-->
+        <ul class="chat">
+          
+        </ul>
       </div>
       
     </div>
-    <h3 class ="page-header">댓글</h1>
-      <ul class="chat">
-                 
-      </ul>
+    
   </div>
 
 </div>
@@ -147,10 +154,29 @@
 			+ '          <small class="pull-right text-muted">'+data.replyDate+'</small>'
 			+ '	        </div>'
 			+ '        <p>'+data.reply+'</p>'
+			+ '        <div><a id="replyDel" href="#" data-rno="'+data.rno+'"onclick="replyDelFunc(this);return false;" class="small pull-right">삭제</a><div>'
 		    + '    </div>'
 		    + '	 </li>'
 	}
   })
-
+  //삭제 함수
+  function replyDelFunc(obj){
+	  let rno = $(obj).attr('data-rno');
+	  let result = confirm("삭제하시겠습니까?");
+	  let li = $(obj).closest("li");
+	  if(result) {
+		  $.ajax({
+			  url: '../reply/'+rno,
+			  type:'DELETE',
+			  dataType:'json',
+			  success:function(e){
+				  if(e==true){
+					  li.remove();
+				  }
+				  
+			  }
+		  })//ajax end==
+	  }
+  }//replyDelFunc end==
 </script>
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>

@@ -45,6 +45,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="${pageContext.request.contextPath }/resources/asset/dist/js/sb-admin-2.js"></script>
 
+<style type="text/css">
+  p {word-wrap: break-word;}
+</style>
 </head>
 
 <body>
