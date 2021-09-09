@@ -46,39 +46,11 @@
                                             <label>Content</label>
                                             <textarea class="form-control" rows="3" name="content"></textarea>
                                         </div>
+                                        <div>
                                         <button type="button" class="btn btn-default" id="btnRegister">Submit Button</button>
                                         <button type="reset" class="btn btn-default">Reset Button</button>
+                                        </div>
                                     </form>
-                                        
-                                        <!-- 파일업로드 새로 추가하는 부분-->
-<div class="row">
-  <div class="col-lg-12">
-    <div class="panel panel-default">
-
-      <div class="panel-heading">File Attach</div>
-      <!-- /.panel-heading -->
-      <div class="panel-body">
-        <div class="form-group uploadDiv">
-            <input type="file" name='uploadFile' multiple="multiple">
-        </div>
-        
-        <div class='uploadResult'> 
-          <ul>
-          
-          </ul>
-        </div>
-        
-        
-      </div>
-      <!--  end panel-body -->
-
-    </div>
-    <!--  end panel-body -->
-  </div>
-  <!-- end panel -->
-</div>
-<!-- /.row -->                                        
-<button type="button" id="uploadBtn">업로드</button>
                                 </div>
                             </div>
                             <!-- /.row (nested) -->
@@ -90,6 +62,32 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+<!-- 파일업로드 새로 추가하는 부분-->
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">File Attach</div>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="form-group uploadDiv">
+            <input type="file" name='uploadFile' multiple="multiple">
+        </div>
+            <button type="button" id="uploadBtn">업로드</button>
+        <div class='uploadResult'> 
+          <ul>
+          
+          </ul>
+        </div>
+        
+      </div>
+      <!--  end panel-body -->
+    </div>
+    <!--  end panel-body -->
+  </div>
+  <!-- end panel -->
+</div>
+<!-- /.row -->                                        
 
 
 <script>

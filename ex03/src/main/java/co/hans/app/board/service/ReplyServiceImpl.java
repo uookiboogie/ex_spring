@@ -30,6 +30,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public int delete(ReplyVO vo) {
+		vo = replyMapper.read(vo);
 		boardmapper.updateReplycnt(vo.getBno(), -1L);
 		return replyMapper.delete(vo);
 	}

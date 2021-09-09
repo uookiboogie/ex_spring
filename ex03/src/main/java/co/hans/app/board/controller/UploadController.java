@@ -93,7 +93,7 @@ public class UploadController {
 			  
 			  UUID uuid = UUID.randomUUID(); //uuid 만들기
 			  
-			  File file = new File(path, uuid+fileName);
+			  File file = new File(path, uuid+"_"+fileName);
 			  ufile.transferTo(file);
 			  //파일정보
 			  BoardAttachVO attachvo = new BoardAttachVO();
