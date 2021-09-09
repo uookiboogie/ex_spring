@@ -34,10 +34,10 @@ import co.hans.app.board.domain.PageVO;
 import co.hans.app.board.service.BoardAttachService;
 import co.hans.app.board.service.BoardService;
 
-@Controller
-@RequestMapping("/board/*")
-//@SessionAttributes("cri")
-public class BoardController {
+//@Controller
+//@RequestMapping("/board/*")
+////@SessionAttributes("cri")
+public class BoardController2 {
 	
 	@Autowired BoardService boardService;
 	@Autowired BoardAttachService boardAttachService;
@@ -82,7 +82,33 @@ public class BoardController {
 			               RedirectAttributes rttr, 
 			               MultipartFile[] uploadFile) throws IllegalStateException, IOException {
 		
-		//vo.setAttachList(list);
+		List<BoardAttachVO> list = new ArrayList<BoardAttachVO>();
+		
+		String path = "c:/upload";
+		
+		for(int i=0; i<uploadFile.length; i++) {
+			MultipartFile ufile = uploadFile[i];
+			if(!ufile.isEmpty() && ufile.getSize()>0) {
+			  String fileName = ufile.getOriginalFilename();
+			  //확장자 붙이기
+			  int pos = fileName .lastIndexOf(".");
+			  String _fileName = fileName.substring(pos);
+			  
+			  String saveName = System.currentTimeMillis()+_fileName;
+			  
+			  UUID uuid = UUID.randomUUID(); //uuid 만들기
+			  
+			  File file = new File(path, uuid+fileName);
+			  ufile.transferTo(file);
+			  //파일정보
+			  BoardAttachVO attachvo = new BoardAttachVO();
+			  attachvo.setUuid(uuid.toString());
+			  attachvo.setFileName(fileName);
+			  attachvo.setUploadPath(path);
+			  list.add(attachvo);
+			}
+		}
+		vo.setAttachList(list);
 		
 		boardService.insert(vo);
 		rttr.addFlashAttribute("result", vo.getBno());

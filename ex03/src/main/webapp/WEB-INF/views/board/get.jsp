@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <%@ include file="/WEB-INF/views/includes/header.jsp"%>
 
@@ -61,9 +63,33 @@
 										  <input type="hidden" name="pageNum" value="${cri.pageNum}">
 										  <input type="hidden" name="amount" value="${cri.amount}">
 
+
+                                        <!-- 파일 표시 -->
+                                        <div class ="row">
+                                          <div class="col-lg-12">
+                                            <div class="panel panel-default">
+                                              <div class="panel-heading">Files</div>
+                                              <div class="panel-body">
+                                                <div class="uploadResult">
+                                                  <ul>
+                                                  
+                                          <c:forEach items="${board.attachList}" var="attach">
+                                           <li><a href="download?uuid=${attach.uuid }">${attach.fileName }</a></li>
+                                          </c:forEach>
+                                                  
+                                                  </ul>
+                                                </div>                                                  
+                                              </div>                                        
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div>
+                                        
+                                        
                                         <button type="submit" class="btn btn-default">수정하기</button>
                                         <button type="submit" class="btn btn-danger" formaction="delete">삭제하기</button>
                                         <a type="button" class="btn btn-success" href="list?pageNum=${cri.pageNum }&amount=${cri.amount}">목록으로</a>
+                                        </div>
                                     </form>                  
                                 </div>
                             </div>

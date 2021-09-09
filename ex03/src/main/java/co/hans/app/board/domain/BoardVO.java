@@ -1,6 +1,7 @@
 package co.hans.app.board.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,4 +20,6 @@ public class BoardVO {
   private Date updateDate;  //수정일자
   
   private long replycnt;
+  
+  private List<BoardAttachVO> attachList; //이거 왜넣어? ㅠㅠ 열받아 짜증
 }

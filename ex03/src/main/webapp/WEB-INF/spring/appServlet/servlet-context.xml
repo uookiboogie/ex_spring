@@ -30,7 +30,6 @@
 	
 	<!-- 트랜잭셔어어언 시작 -->
 	
-	
 	<tx:annotation-driven></tx:annotation-driven>
 
 	<!-- 트랜잭션 처리 -->
@@ -52,7 +51,14 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 	</aop:config> 
 
+  <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
   
-  <aop:aspectj-autoproxy></aop:aspectj-autoproxy>	
-	
+  <!-- 파일 업로드 관련 -->
+  <!-- MultipartResolver 설정-->
+  <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- 용량 설정 -->
+    <beans:property name="maxUploadSize" value="100000000" />
+    <beans:property name="maxInMemorySize" value="1000000" />
+  </beans:bean>
+  
 </beans:beans>
