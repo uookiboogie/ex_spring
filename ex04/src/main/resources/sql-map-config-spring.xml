@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+   <settings>
+     <!-- 카멜케이스 설정 -->
+     <setting name="mapUnderscoreToCamelCase" value="true"/>
+   </settings>
+   
+   <typeAliases>
+     <!-- 이름 줄이기 -->
+<!--      <typeAlias type="co.hans.app.board.domain.BoardVO" alias="BoardVO"/> -->
+     <!-- 자동으로 만들기 소문자,대문자 상관없이 파일명-->
+     <package name="co.hans.app"/>
+   </typeAliases>
+ </configuration>
