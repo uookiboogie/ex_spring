@@ -3,6 +3,8 @@ package co.hans.app.board.domain;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,6 +17,7 @@ public class BoardVO {
   private String content;   //내용
   private String writer;    //작성자
   @JsonFormat(pattern = "yyyy/MM/dd")
+  @DateTimeFormat()
   private Date regdate;     //작성일자
   @JsonIgnore
   private Date updateDate;  //수정일자

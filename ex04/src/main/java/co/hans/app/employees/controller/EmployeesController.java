@@ -84,7 +84,7 @@ public class EmployeesController {
 	@GetMapping("register")
 	public String insertForm(EmployeesVO vo) {
 		
-		return "employees/register";
+		return "no/employees/register";
 	}
 
 	//수정폼
